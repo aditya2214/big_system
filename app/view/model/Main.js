@@ -9,6 +9,8 @@ Ext.define('App.view.model.Main',{
         'App.view.model.List',
 
         'App.view.model.Toolbar',
+        'App.view.model.Uploadform',
+
 
     ],
 

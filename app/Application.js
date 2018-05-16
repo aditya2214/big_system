@@ -23,7 +23,9 @@ Ext.define('App.Application', {
     stores: [
         // TODO: add global / shared stores here
         'Mastermodels',
-        'Schedules'
+        'Schedules',
+        'Histories',
+        'ScheduleMasters'
     ],
 
     launch: function () {

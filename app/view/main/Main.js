@@ -19,6 +19,8 @@ Ext.define('App.view.main.Main', {
 
         'App.view.model.Main',
         'App.view.schedule.Main',
+        'App.view.history.History',
+
 
     ],
 
@@ -82,24 +84,24 @@ Ext.define('App.view.main.Main', {
 
     items: [ {
             title: 'Schedules',
-            iconCls: 'fa-user',
+            iconCls: 'fa-calendar',
             items:[{
                 xtype: 'schedule_main'
             }]
         },{
             title: 'Models',
-            iconCls: 'fa-home',
+            iconCls: 'fa-microchip',
             // The following grid shares a store with the classic version's grid as well!
             items: [{
                 xtype: 'model_main'
             }]
-        }, /*{
-            title: 'Groups',
-            iconCls: 'fa-users',
-            bind: {
-                html: '{loremIpsum}'
-            }
         }, {
+            title: 'History',
+            iconCls: 'fa-history',
+            items: [{
+                xtype: 'history_main'
+            }]
+        }, /*{
             title: 'Settings',
             iconCls: 'fa-cog',
             bind: {

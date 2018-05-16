@@ -45,7 +45,7 @@ Ext.define('App.view.model.List', {
             },
             items : [{
                 xtype:'textfield',
-                name: 'search_by_name',
+                name: 'search_by_name_model',
                 margin : 4,
                 emptyText : 'Searh',
                 enableKeyEvents: true,
@@ -66,7 +66,7 @@ Ext.define('App.view.model.List', {
             },
             items : [{
                 xtype:'textfield',
-                name: 'search_by_pwbno',
+                name: 'search_by_pwbno_model',
                 margin : 4,
                 flex: 1,
                 enableKeyEvents: true,
@@ -88,7 +88,7 @@ Ext.define('App.view.model.List', {
             },
             items : [{
                 xtype:'textfield',
-                name: 'search_by_pwbname',
+                name: 'search_by_pwbname_model',
                 margin : 4,
                 emptyText : 'Searh',
                 enableKeyEvents: true,
@@ -109,7 +109,7 @@ Ext.define('App.view.model.List', {
             },
             items : [{
                 xtype:'textfield',
-                name: 'search_by_process',
+                name: 'search_by_process_model',
                 margin : 4,
                 flex: 1,
                 enableKeyEvents: true,
@@ -131,7 +131,7 @@ Ext.define('App.view.model.List', {
             },
             items : [{
                 xtype:'textfield',
-                name: 'search_by_code',
+                name: 'search_by_code_model',
                 margin : 4,
                 flex: 1,
                 enableKeyEvents: true,

@@ -34,6 +34,7 @@ Ext.define('App.view.schedule.Uploadform',{
             xtype: 'datefield',
             name: 'release_date',
             fieldLabel: 'Release Date',
+            allowBlank: false,
             bind: {
                 value: '{model.release_date}'
             },
@@ -43,6 +44,7 @@ Ext.define('App.view.schedule.Uploadform',{
             xtype: 'datefield',
             name: 'effective_date',
             fieldLabel: 'Effective Date',
+            allowBlank: false,
             bind: {
                 value: '{model.effective_date}'
             },
@@ -60,6 +62,7 @@ Ext.define('App.view.schedule.Uploadform',{
         },
         {
             xtype: 'filefield',
+            allowBlank: false,
             name: 'file',
             fieldLabel: 'Schedule .csv',
             labelWidth: 100,
@@ -74,8 +77,8 @@ Ext.define('App.view.schedule.Uploadform',{
             xtype: 'button',
             text : 'upload',
             name: 'btn_save',
-            // disabled:true,
-            // formBind: true,
+            disabled:true,
+            formBind: true,
             listeners: {
                 click: 'onSendFile'
             }    

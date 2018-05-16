@@ -21,7 +21,6 @@ Ext.define('App.view.schedule.MainController', {
                 //set viewModel here
             }]
         }).show();
-
     },
 
     onSendFile : function (button){
@@ -34,7 +33,11 @@ Ext.define('App.view.schedule.MainController', {
                 url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedules',
                 waitMsg: 'Processing...',
                 success: function(fp, o) {
-                    Ext.Msg.alert('Success', o.result._meta.upload_status );
+                    console.log({
+                        fp, o
+                    })
+                    Ext.Msg.alert('Success', o.result.message );
+                    Ext.getStore('Schedules').load();
                 },
                 failure: function(fp, o){
                     console.log({
@@ -69,6 +72,7 @@ Ext.define('App.view.schedule.MainController', {
                 console.log({
                     response, opts
                 })
+                Ext.getStore('Schedules').load();
                 myMask.hide();
             },
             failure : function(response, opts){
@@ -81,6 +85,84 @@ Ext.define('App.view.schedule.MainController', {
         })
     },
 
+    getElement : function (){
+        return {
+            search_by_name : Ext.ComponentQuery.query('textfield[name=search_by_name]')[0],
+            search_by_pwbno  : Ext.ComponentQuery.query('textfield[name=search_by_pwbno]')[0],
+            search_by_pwbname : Ext.ComponentQuery.query('textfield[name=search_by_pwbname]')[0],
+            search_by_process : Ext.ComponentQuery.query('textfield[name=search_by_process]')[0],
+            search_by_code : Ext.ComponentQuery.query('textfield[name=search_by_code]')[0],
+            search_by_prod_no : Ext.ComponentQuery.query('textfield[name=search_by_prod_no]')[0],
+            search_by_rev_date : Ext.ComponentQuery.query('textfield[name=search_by_rev_date]')[0],
+            search_by_line : Ext.ComponentQuery.query('textfield[name=search_by_line]')[0],
+            search_by_lot_size : Ext.ComponentQuery.query('textfield[name=search_by_lot_size]')[0],
+            search_by_seq_start : Ext.ComponentQuery.query('textfield[name=search_by_seq_start]')[0],
+            search_by_seq_end : Ext.ComponentQuery.query('textfield[name=search_by_seq_end]')[0],
+            search_by_start_serial : Ext.ComponentQuery.query('textfield[name=search_by_start_serial]')[0],
+        }
+    },
 
+    getElementValue : function (){
+        var elements = this.getElement();
+
+        var elementsValue = {
+            name: elements.search_by_name.value,
+            pwbno: elements.search_by_pwbno.value,
+            pwbname: elements.search_by_pwbname.value,
+            process: elements.search_by_process.value,
+            code : elements.search_by_code.value,
+            prod_no : elements.search_by_prod_no.value,
+            rev_date : elements.search_by_rev_date.value,
+            line : elements.search_by_line.value,
+            lot_size : elements.search_by_lot_size.value,
+            seq_start : elements.search_by_seq_start.value,
+            seq_end : elements.search_by_seq_end.value,
+            start_serial : elements.search_by_start_serial.value,
+
+        }
+
+        // return elementsValue;
+
+        let result = {}
+        var key;
+        for (key in elementsValue){
+            if (elementsValue[key] != '' && elementsValue[key] != null  ) {
+                result[key] = elementsValue[key]
+            }
+        }
+
+        return result;
+    },
+
+    onSearch : function (component, e){
+        if (e.keyCode == 13) {
+            store = Ext.getStore('Schedules') //this.getViewModel().getStore('tools');
+            self = this;
+            params = this.getElementValue();
+            
+            console.log({
+                store,
+                params
+            })
+
+            store.load({
+                params: params,
+                callback: function(records,operation,success){
+                    console.log({
+                        records, operation, success
+                    })
+                    /*if(model != null){
+                        
+                    }else{
+                        const message = 'Tool Number not found!<br>please recheck for typo or kindly contact JEIN for support';
+                        Ext.Msg.alert('Info', message );
+                        element.no.focus();
+                        return;
+                    }*/
+                }
+            })
+            
+        }
+    },
 
 });

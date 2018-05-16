@@ -53,6 +53,15 @@ Ext.define("App.view.model.Toolbar", {
             listeners: {
                 click: 'uploadOnClick'
             }
+        },{
+            xtype:'button',
+            name : 'btn-process',
+            icon : 'resources/Play-16.png',
+            text : 'PROCESS',
+            tooltip: 'Generate Master Model Code!!',
+            listeners: {
+                click: 'processOnClick'
+            }
         },
     ]
         

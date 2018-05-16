@@ -6,7 +6,7 @@ Ext.define("App.view.schedule.Toolbar", {
     frame:true,
 
     items: [
-        {
+        /*{
             xtype:'button',
             // iconAlign : 'top',
             icon : 'resources/add-circle-green-16.png',
@@ -21,7 +21,7 @@ Ext.define("App.view.schedule.Toolbar", {
             listeners: {
                 click: 'onAddClick'
             }
-        },
+        },*/
         /*{
             xtype: 'datefield',
             // id: 'forecast_date',
@@ -57,7 +57,7 @@ Ext.define("App.view.schedule.Toolbar", {
             name : 'btn-process',
             icon : 'resources/Play-16.png',
             text : 'PROCESS',
-            tooltip: 'Upload Master Model!!',
+            tooltip: 'Generate Code!!',
             listeners: {
                 click: 'processOnClick'
             }
