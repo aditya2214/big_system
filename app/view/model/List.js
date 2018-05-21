@@ -3,22 +3,18 @@ Ext.define('App.view.model.List', {
     
     xtype: 'model_list',
 
-    /*requires: [
-        'App.store.Suppliers'
-    ],*/
-
     viewConfig  : {
         stripeRows          : true,
         enableTextSelection : true
     },
-    //store nya di bind refer ke viewModel.data.stores
-    /*bind: {
-        store : '{mastermodels}'
-    },*/
+    
     store : 'Mastermodels',
     
+    plugins: {
+        ptype: 'rowediting',
+        clicksToEdit: 2
+    },
 
-    // layout : 'fit',
     frame: true,
 
     style:{
@@ -38,6 +34,7 @@ Ext.define('App.view.model.List', {
             text: 'Model Name',
             dataIndex: 'name', 
             flex: 1,
+            editor: 'textfield',
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -58,6 +55,7 @@ Ext.define('App.view.model.List', {
         { 
             text: 'PWBNO',
             dataIndex: 'pwbno',
+            editor: 'textfield',
             flex: 5,
             layout: {
                 type: 'vbox',
@@ -80,6 +78,7 @@ Ext.define('App.view.model.List', {
         { 
             text: 'PWB Name',
             dataIndex: 'pwbname', 
+            editor: 'textfield',
             flex: 5,
             layout: {
                 type: 'vbox',
@@ -101,6 +100,7 @@ Ext.define('App.view.model.List', {
         { 
             text: 'Process',
             dataIndex: 'process',
+            editor: 'textfield',
             flex: 5,
             layout: {
                 type: 'vbox',
@@ -120,6 +120,59 @@ Ext.define('App.view.model.List', {
             }]
         },
 
+        { 
+            text: 'cavity',
+            dataIndex: 'cavity',
+            editor: 'textfield',
+            flex: 5,
+            layout: {
+                type: 'vbox',
+                pack: 'center',
+                align: 'stretch'
+            },
+            items : [{
+                xtype:'textfield',
+                name: 'search_by_cavity_model',
+                margin : 4,
+                flex: 1,
+                enableKeyEvents: true,
+                listeners: {
+                    keyup: 'onSearch'
+                },
+                emptyText : 'Searh'
+            }]
+        },
+
+        { 
+            text: 'Side',
+            dataIndex: 'side',
+            editor: {
+                xtype: 'combo',
+                store: 'Sides',
+                emptyText: 'Select Side',
+                queryMode : 'local',
+                // labelWidth:50,
+                displayField:'name',
+                valueField:'name',
+            },
+            flex: 5,
+            layout: {
+                type: 'vbox',
+                pack: 'center',
+                align: 'stretch'
+            },
+            items : [{
+                xtype:'textfield',
+                name: 'search_by_side_model',
+                margin : 4,
+                flex: 1,
+                enableKeyEvents: true,
+                listeners: {
+                    keyup: 'onSearch'
+                },
+                emptyText : 'Searh'
+            }]
+        },
         { 
             text: 'Code',
             dataIndex: 'code',

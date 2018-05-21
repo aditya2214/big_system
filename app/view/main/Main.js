@@ -90,7 +90,8 @@ Ext.define('App.view.main.Main', {
             }]
         },{
             title: 'Models',
-            iconCls: 'fa-microchip',
+            iconCls: 'fa-home',
+            // icon: 'resources/pcb-20.png',
             // The following grid shares a store with the classic version's grid as well!
             items: [{
                 xtype: 'model_main'

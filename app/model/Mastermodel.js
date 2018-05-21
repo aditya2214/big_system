@@ -8,6 +8,9 @@ Ext.define('App.model.Mastermodel', {
         { name: 'pwbname', type: 'auto' },
         { name: 'process', type: 'auto' },
         { name: 'code', type: 'auto' },
+        { name: 'cavity', type: 'auto' },
+        { name: 'side', type: 'auto' },
+    	
     ]
     
 });

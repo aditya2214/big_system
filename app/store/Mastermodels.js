@@ -7,6 +7,8 @@ Ext.define('App.store.Mastermodels', {
 
     autoLoad: true,
 
+    autoSync: true,
+
     proxy: {
         type: 'rest',
 

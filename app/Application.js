@@ -25,7 +25,8 @@ Ext.define('App.Application', {
         'Mastermodels',
         'Schedules',
         'Histories',
-        'ScheduleMasters'
+        'ScheduleMasters',
+        'Sides'
     ],
 
     launch: function () {
