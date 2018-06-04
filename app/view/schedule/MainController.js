@@ -35,7 +35,7 @@ Ext.define('App.view.schedule.MainController', {
         // return ;
         if(form.isValid()) {
             form.submit({
-                url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedules/upload',
+                url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/upload',
                 waitMsg: 'Processing...',
                 success: function(fp, o) {
                     console.log({
@@ -48,7 +48,12 @@ Ext.define('App.view.schedule.MainController', {
                     console.log({
                         fp, o
                     })
-                    Ext.Msg.alert('failure', o.result._meta.upload_status );
+
+                    if (o.result.error) {
+                        var message = o.result.error.message 
+                        + '.<br> please screenshot & Call IT Team if you need help';
+                        Ext.Msg.alert('failure', message );
+                    }
 
                 }
             });
@@ -61,8 +66,8 @@ Ext.define('App.view.schedule.MainController', {
         if (form == undefined ) {
             form = Ext.create('Ext.window.Window', {
                 title: 'Process Form',
-                height: 600,
-                width: 1100,
+                height: 300,
+                width: 400,
                 maximizable : true,
                 layout: 'fit',
                 modal :true,
