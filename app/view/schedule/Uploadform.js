@@ -14,11 +14,11 @@ Ext.define('App.view.schedule.Uploadform',{
         type: 'schedule-main'
     },
 
-    margin : '10',
+    // margin : '10',
     
-    title: 'Upload Form',
+    // title: 'Upload Form',
 
-    frame: true,
+    // frame: true,
 
     resizable: true,
 
@@ -30,36 +30,6 @@ Ext.define('App.view.schedule.Uploadform',{
     },
 
     items : [
-        {
-            xtype: 'datefield',
-            name: 'release_date',
-            fieldLabel: 'Release Date',
-            allowBlank: false,
-            bind: {
-                value: '{model.release_date}'
-            },
-            format: 'Y-m-d',
-            emptyText:'yyyy-mm-dd'
-        },{
-            xtype: 'datefield',
-            name: 'effective_date',
-            fieldLabel: 'Effective Date',
-            allowBlank: false,
-            bind: {
-                value: '{model.effective_date}'
-            },
-            format: 'Y-m-d',
-            emptyText:'yyyy-mm-dd'
-        },{
-            xtype: 'datefield',
-            name: 'end_effective_date',
-            fieldLabel: 'End Effective Date',
-            bind: {
-                value: '{model.end_effective_date}'
-            },
-            format: 'Y-m-d',
-            emptyText:'yyyy-mm-dd'
-        },
         {
             xtype: 'filefield',
             allowBlank: false,

@@ -8,19 +8,24 @@ Ext.define('App.view.schedule.MainController', {
 
     uploadOnClick : function(){
     	console.log('uploadOnClick')
-        Ext.create('Ext.window.Window', {
-            // title: 'CHART',
-            height: 600,
-            width: 1100,
-            maximizable : true,
-            layout: 'fit',
-            modal :true,
-            // frame: true,
-            items: [{
-                xtype : 'schedule_upload_form',
-                //set viewModel here
-            }]
-        }).show();
+        var form;
+        if (form == undefined ) {
+            form = Ext.create('Ext.window.Window', {
+                title: 'Upload Form',
+                height: 300,
+                width: 600,
+                maximizable : true,
+                layout: 'fit',
+                modal :true,
+                // frame: true,
+                items: [{
+                    xtype : 'schedule_upload_form',
+                    //set viewModel here
+                }]
+            })    
+        }
+
+        form.show();
     },
 
     onSendFile : function (button){
@@ -30,7 +35,7 @@ Ext.define('App.view.schedule.MainController', {
         // return ;
         if(form.isValid()) {
             form.submit({
-                url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedules',
+                url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedules/upload',
                 waitMsg: 'Processing...',
                 success: function(fp, o) {
                     console.log({
@@ -50,7 +55,29 @@ Ext.define('App.view.schedule.MainController', {
         }
     },
 
-    processOnClick : function (){
+    processOnClick (){
+        console.log('processOnClick')
+        var form;
+        if (form == undefined ) {
+            form = Ext.create('Ext.window.Window', {
+                title: 'Process Form',
+                height: 600,
+                width: 1100,
+                maximizable : true,
+                layout: 'fit',
+                modal :true,
+                // frame: true,
+                items: [{
+                    xtype : 'schedule_process_form',
+                    margin: '0',
+                    //set viewModel here
+                }]
+            }).show();
+        }
+        form.show();
+    },
+
+    processOnClickObsolette : function (){
     	console.log('processOnClick')
         let self = this;
 
@@ -163,6 +190,10 @@ Ext.define('App.view.schedule.MainController', {
             })
             
         }
+    },
+
+    onProcessSubmit(){
+        console.log('onProcessSubmit')
     },
 
 });
