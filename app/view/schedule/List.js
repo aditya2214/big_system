@@ -58,7 +58,7 @@ Ext.define('App.view.schedule.List', {
         { 
             text: 'PWBNO',
             dataIndex: 'pwbno',
-            flex: 5,
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -80,7 +80,7 @@ Ext.define('App.view.schedule.List', {
         { 
             text: 'PWB Name',
             dataIndex: 'pwbname', 
-            flex: 5,
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -101,7 +101,7 @@ Ext.define('App.view.schedule.List', {
         { 
             text: 'Process',
             dataIndex: 'process',
-            flex: 5,
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -121,9 +121,9 @@ Ext.define('App.view.schedule.List', {
         },
 
         { 
-            text: 'Code',
-            dataIndex: 'code',
-            flex: 5,
+            text: 'Qty',
+            dataIndex: 'qty',
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -145,7 +145,7 @@ Ext.define('App.view.schedule.List', {
         { 
             text: 'Prod No',
             dataIndex: 'prod_no',
-            flex: 5,
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -167,7 +167,7 @@ Ext.define('App.view.schedule.List', {
         { 
             text: 'Rev Date',
             dataIndex: 'rev_date',
-            flex: 5,
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -189,7 +189,7 @@ Ext.define('App.view.schedule.List', {
         { 
             text: 'Line',
             dataIndex: 'line',
-            flex: 5,
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -211,7 +211,7 @@ Ext.define('App.view.schedule.List', {
         { 
             text: 'Lot Size',
             dataIndex: 'lot_size',
-            flex: 5,
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -233,7 +233,7 @@ Ext.define('App.view.schedule.List', {
         { 
             text: 'Sequence start',
             dataIndex: 'seq_start',
-            flex: 5,
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -255,7 +255,7 @@ Ext.define('App.view.schedule.List', {
         { 
             text: 'Sequence End',
             dataIndex: 'seq_end',
-            flex: 5,
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -277,7 +277,7 @@ Ext.define('App.view.schedule.List', {
         { 
             text: 'Start Serial',
             dataIndex: 'start_serial',
-            flex: 5,
+            //flex: 5,
             layout: {
                 type: 'vbox',
                 pack: 'center',

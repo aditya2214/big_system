@@ -87,10 +87,10 @@ Ext.define('App.view.model.MainController', {
             self = this;
             params = this.getElementValue();
     		
-    		console.log({
+    		/*console.log({
     			store,
     			params
-    		})
+    		})*/
 
             store.load({
                 params: params,
@@ -119,6 +119,8 @@ Ext.define('App.view.model.MainController', {
 			search_by_pwbname: Ext.ComponentQuery.query('textfield[name=search_by_pwbname_model]')[0],
 			search_by_process: Ext.ComponentQuery.query('textfield[name=search_by_process_model]')[0],
 			search_by_code: Ext.ComponentQuery.query('textfield[name=search_by_code_model]')[0],
+            search_by_cavity: Ext.ComponentQuery.query('textfield[name=search_by_cavity_model]')[0],
+
     	};
     },
 
@@ -131,6 +133,7 @@ Ext.define('App.view.model.MainController', {
     		pwbname: elements.search_by_pwbname.value,
     		process: elements.search_by_process.value,
     		code: elements.search_by_code.value,
+            cavity : elements.search_by_cavity.value,
     	}
 
     	// return elementsValue;

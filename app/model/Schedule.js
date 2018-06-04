@@ -15,6 +15,7 @@ Ext.define('App.model.Schedule', {
         { name: 'seq_start', type: 'int' },
         { name: 'seq_end', type: 'int' },
         { name: 'start_serial', type: 'auto' },
+        { name: 'qty', type: 'int' },
 
     ]
     
