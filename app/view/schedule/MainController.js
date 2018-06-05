@@ -62,24 +62,51 @@ Ext.define('App.view.schedule.MainController', {
 
     processOnClick (){
         console.log('processOnClick')
-        var form;
-        if (form == undefined ) {
-            form = Ext.create('Ext.window.Window', {
-                title: 'Process Form',
-                height: 300,
-                width: 400,
-                maximizable : true,
-                layout: 'fit',
-                modal :true,
-                // frame: true,
-                items: [{
-                    xtype : 'schedule_process_form',
-                    margin: '0',
-                    //set viewModel here
-                }]
-            }).show();
-        }
-        form.show();
+        Ext.Ajax.request({
+            url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/preprocess',
+            method: 'GET',
+            success: function (response, opts){
+
+                var result = JSON.parse(response.responseText);
+                // console.log(result)
+                // jika belum digenerate baru.
+                if (!result.is_generated) {
+                    var form;
+                    if (form == undefined ) {
+                        form = Ext.create('Ext.window.Window', {
+                            title: 'Process Form',
+                            height: 300,
+                            width: 400,
+                            maximizable : true,
+                            layout: 'fit',
+                            modal :true,
+                            // frame: true,
+                            items: [{
+                                xtype : 'schedule_process_form',
+                                margin: '0',
+                                //set viewModel here
+                            }]
+                        }).show();
+                    }
+                    form.show();
+                }else{
+                    Ext.Msg.alert('Info', result.message)
+                }
+                
+            },
+            failure : function(response, opts){
+                console.log('failure')
+                console.log({
+                    response, opts
+                })
+                
+                Ext.Msg.alert('Info', 'Upps!! something went wrong.' );
+
+                
+            }
+        })
+
+        
     },
 
     processOnClickObsolette : function (){
@@ -112,6 +139,9 @@ Ext.define('App.view.schedule.MainController', {
                 console.log({
                     response, opts
                 })
+
+                Ext.Msg.alert('Info', 'Upps!! something went wrong.' );
+
                 myMask.hide();
             }
         })
@@ -199,6 +229,7 @@ Ext.define('App.view.schedule.MainController', {
 
     onProcessSubmit(){
         console.log('onProcessSubmit')
+        
     },
 
 });
