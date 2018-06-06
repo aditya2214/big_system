@@ -61,7 +61,23 @@ Ext.define("App.view.schedule.Toolbar", {
             listeners: {
                 click: 'processOnClick'
             }
-        },
+        },{
+            xtype: 'textfield',
+            labelWidth:70,
+            name: 'search_code',
+            fieldLabel: 'Search By Code ',
+            emptyText : 'Type Code Here ...',
+        },{
+            xtype:'button',
+            name : 'btn-search',
+            icon : 'resources/search.png',
+            // text : 'Search',
+            tooltip: 'Search By Code',
+            listeners: {
+                click: 'searchCodeOnClick'
+            }
+        }
+
     ]
         
 });

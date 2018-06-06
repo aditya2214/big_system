@@ -257,4 +257,18 @@ Ext.define('App.view.schedule.MainController', {
         })
     },
 
+    searchCodeOnClick(button){
+        var code = button.previousSibling('textfield[name=search_code]').value;
+        var store= Ext.getStore('Schedules');
+
+        if (code != '') {
+            store.load({
+                params: {
+                    code : code
+                }
+            })
+        }   
+
+    }
+
 });
