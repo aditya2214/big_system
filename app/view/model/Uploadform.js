@@ -14,11 +14,11 @@ Ext.define('App.view.model.Uploadform',{
         type: 'model-main'
     },
 
-    margin : '10',
+    // margin : '10',
     
-    title: 'Upload Form',
+    // title: 'Upload Form',
 
-    frame: true,
+    // frame: true,
 
     resizable: true,
 

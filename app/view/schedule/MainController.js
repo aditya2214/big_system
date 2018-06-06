@@ -105,8 +105,6 @@ Ext.define('App.view.schedule.MainController', {
                 
             }
         })
-
-        
     },
 
     processOnClickObsolette : function (){
@@ -227,9 +225,36 @@ Ext.define('App.view.schedule.MainController', {
         }
     },
 
-    onProcessSubmit(){
-        console.log('onProcessSubmit')
+    onProcessSubmit(button){
+        let self = this;
+
+        var myMask = new Ext.LoadMask({
+            msg    : 'Please wait...',
+            target : self.getView(),
+            hideAnimation: 'fadeOut',
+        });
         
+        myMask.show();
+
+        var param = button.up('form').getForm().getValues();
+        Ext.Ajax.request({
+            url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/process',
+            params: param,
+            method: 'POST',
+            success: function (response, opts){
+                console.log({response, opts});
+                Ext.Msg.alert('Success', 'Great!!');
+            },
+            failure(response, opts){
+                console.log({
+                    response, opts
+                })
+                Ext.Msg.alert('Error!', 'Something Went Wrong');
+            },
+            callback(){
+                myMask.hide();
+            }
+        })
     },
 
 });
