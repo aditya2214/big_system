@@ -67,6 +67,10 @@ Ext.define("App.view.schedule.Toolbar", {
             name: 'search_code',
             fieldLabel: 'Search By Code ',
             emptyText : 'Type Code Here ...',
+            enableKeyEvents: true,
+            listeners: {
+                keyup: 'searchCodeOnEnter'
+            }
         },{
             xtype:'button',
             name : 'btn-search',

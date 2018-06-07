@@ -268,7 +268,16 @@ Ext.define('App.view.schedule.MainController', {
                 }
             })
         }   
+    },
 
+    searchCodeOnEnter(component, e){
+        if (e.keyCode == 13) {
+            var button = component.nextSibling('button[name=btn-search]')
+            console.log({component, button})
+            if (button != undefined) {
+                button.click();
+            }
+        }
     }
 
 });
