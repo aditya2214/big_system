@@ -278,6 +278,18 @@ Ext.define('App.view.schedule.MainController', {
                 button.click();
             }
         }
+    },
+
+    onRefresh(paggingtoolbar, page, opts){
+        /*console.log({
+            paggingtoolbar,
+            page,
+            opts
+        })*/
+
+        var code = Ext.getCmp('search_code');
+        console.log(code)
+        code.setValue('');
     }
 
 });

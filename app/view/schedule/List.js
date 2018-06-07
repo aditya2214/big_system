@@ -302,7 +302,11 @@ Ext.define('App.view.schedule.List', {
         pageSize: 50,
         store : 'Schedules',
         emptyMsg: 'Sorry, No Records Are Available At The Moment.',   
-        displayInfo: true
+        displayInfo: true,
+        listeners: {
+            beforechange : 'onRefresh'
+        },
+
     }],
 
 });

@@ -65,6 +65,7 @@ Ext.define("App.view.schedule.Toolbar", {
             xtype: 'textfield',
             labelWidth:70,
             name: 'search_code',
+            id : 'search_code',
             fieldLabel: 'Search By Code ',
             emptyText : 'Type Code Here ...',
             enableKeyEvents: true,
