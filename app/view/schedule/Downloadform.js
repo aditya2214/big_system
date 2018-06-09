@@ -1,8 +1,8 @@
 
-Ext.define('App.view.schedule.Uploadform',{
+Ext.define('App.view.schedule.Downloadform',{
     extend: 'Ext.form.Panel',
 
-    xtype:'schedule_upload_form',
+    xtype:'schedule_download_form',
 
     requires: [
         'App.view.schedule.MainController',
@@ -10,6 +10,7 @@ Ext.define('App.view.schedule.Uploadform',{
     ],
 
     controller: 'schedule-main',
+
     viewModel: {
         type: 'schedule-main'
     },
@@ -31,26 +32,34 @@ Ext.define('App.view.schedule.Uploadform',{
 
     items : [
         {
-            xtype: 'filefield',
+            xtype: 'combobox',
             allowBlank: false,
-            name: 'file',
-            fieldLabel: 'Schedule .csv',
-            labelWidth: 100,
-            msgTarget: 'side',
+            name: 'generated_type',
+            fieldLabel: 'Download',
+            labelWidth: 75,
+            store : 'Codes',
+            valueField: 'name',
             allowBlank: false,
-            anchor: '100%',
-            buttonText: 'Select Schedule (.csv file)...'
+            emptyText: 'Select Side',
+            queryMode : 'local',
+            displayField:'name',
+            valueField:'name',
+        },
+        {
+            xtype: 'hiddenfield',
+            name: 'code_holder',
+            
         }
     ],
 
     buttons : [{
             xtype: 'button',
-            text : 'upload',
-            name: 'btn_save',
+            text : 'Download',
+            name: 'btn_download',
             disabled:true,
             formBind: true,
             listeners: {
-                click: 'onSendFile'
+                click: 'scheduleDownload'
             }    
         },
     ],

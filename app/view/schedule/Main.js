@@ -9,10 +9,14 @@ Ext.define('App.view.schedule.Main',{
         'App.view.schedule.Toolbar',
         'App.view.schedule.List',
         'App.view.schedule.Uploadform',
+        'App.view.schedule.ProcessForm',
+        'App.view.schedule.Downloadform',
+
 
     ],
 
     controller: 'schedule-main',
+    
     viewModel: {
         type: 'schedule-main'
     },

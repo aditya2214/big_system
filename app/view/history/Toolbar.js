@@ -7,7 +7,7 @@ Ext.define("App.view.history.Toolbar", {
 
     items: [
         
-        {
+        /*{
             xtype: 'datefield',
             id: 'release_date',
             name : 'release_date',
@@ -24,6 +24,20 @@ Ext.define("App.view.history.Toolbar", {
             fieldLabel:'Release Date',
             listeners: {
                 change : 'onReleaseDateChange'
+            }
+        },*/
+        {
+            xtype: 'combobox',
+            name : 'schedule_date',
+            id: 'schedule_date',
+            store: 'ScheduleDates',
+            fieldLabel: 'Release Date',
+            emptyText: 'Select Release Date',
+            labelWidth: 50,
+            displayField: 'release_date',
+            valueField: 'release_date',
+            listeners: {
+                'select' : 'onReleaseDateChange'
             }
         },
         {

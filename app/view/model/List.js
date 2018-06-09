@@ -25,7 +25,8 @@ Ext.define('App.view.model.List', {
         {   
             text : 'No',
             width : 60,
-            xtype: 'rownumberer'
+            xtype: 'rownumberer',
+            align: 'center',
         },
 
         // { text: 'ID',  dataIndex: 'id' },
@@ -35,6 +36,7 @@ Ext.define('App.view.model.List', {
             dataIndex: 'name', 
             flex: 1,
             editor: 'textfield',
+            align: 'center',
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -56,6 +58,7 @@ Ext.define('App.view.model.List', {
             text: 'PWBNO',
             dataIndex: 'pwbno',
             editor: 'textfield',
+            align: 'center',
             flex: 5,
             layout: {
                 type: 'vbox',
@@ -79,6 +82,7 @@ Ext.define('App.view.model.List', {
             text: 'PWB Name',
             dataIndex: 'pwbname', 
             editor: 'textfield',
+            align: 'center',
             flex: 5,
             layout: {
                 type: 'vbox',
@@ -101,6 +105,7 @@ Ext.define('App.view.model.List', {
             text: 'Process',
             dataIndex: 'process',
             editor: 'textfield',
+            align: 'center',
             flex: 5,
             layout: {
                 type: 'vbox',
@@ -124,6 +129,7 @@ Ext.define('App.view.model.List', {
             text: 'cavity',
             dataIndex: 'cavity',
             editor: 'textfield',
+            align: 'center',
             flex: 5,
             layout: {
                 type: 'vbox',
@@ -146,6 +152,7 @@ Ext.define('App.view.model.List', {
         { 
             text: 'Side',
             dataIndex: 'side',
+            align: 'center',
             editor: {
                 xtype: 'combo',
                 store: 'Sides',
@@ -176,6 +183,7 @@ Ext.define('App.view.model.List', {
         { 
             text: 'Code',
             dataIndex: 'code',
+            align: 'center',
             flex: 5,
             layout: {
                 type: 'vbox',

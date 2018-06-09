@@ -9,9 +9,9 @@ Ext.define('App.view.model.MainController', {
     uploadOnClick : function(){
     	console.log('uploadOnClick')
         Ext.create('Ext.window.Window', {
-            // title: 'CHART',
-            height: 600,
-            width: 1100,
+            title: 'Model Upload Form',
+            height: 300,
+            width: 600,
             maximizable : true,
             layout: 'fit',
             modal :true,

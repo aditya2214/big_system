@@ -37,7 +37,7 @@ Ext.define('App.view.history.HistoryController', {
 
 	getElement : function (){
 		return {
-			release_date : Ext.getCmp('release_date'),
+			release_date : Ext.getCmp('schedule_date'),
 			rev : Ext.getCmp('rev'),
 
 		}

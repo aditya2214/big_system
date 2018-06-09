@@ -8,19 +8,24 @@ Ext.define('App.view.schedule.MainController', {
 
     uploadOnClick : function(){
     	console.log('uploadOnClick')
-        Ext.create('Ext.window.Window', {
-            // title: 'CHART',
-            height: 600,
-            width: 1100,
-            maximizable : true,
-            layout: 'fit',
-            modal :true,
-            // frame: true,
-            items: [{
-                xtype : 'schedule_upload_form',
-                //set viewModel here
-            }]
-        }).show();
+        var form;
+        if (form == undefined ) {
+            form = Ext.create('Ext.window.Window', {
+                title: 'Upload Form',
+                height: 300,
+                width: 600,
+                maximizable : true,
+                layout: 'fit',
+                modal :true,
+                // frame: true,
+                items: [{
+                    xtype : 'schedule_upload_form',
+                    //set viewModel here
+                }]
+            })    
+        }
+
+        form.show();
     },
 
     onSendFile : function (button){
@@ -30,7 +35,7 @@ Ext.define('App.view.schedule.MainController', {
         // return ;
         if(form.isValid()) {
             form.submit({
-                url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedules',
+                url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/upload',
                 waitMsg: 'Processing...',
                 success: function(fp, o) {
                     console.log({
@@ -43,14 +48,66 @@ Ext.define('App.view.schedule.MainController', {
                     console.log({
                         fp, o
                     })
-                    Ext.Msg.alert('failure', o.result._meta.upload_status );
+
+                    if (o.result.error) {
+                        var message = o.result.error.message 
+                        + '.<br> please screenshot & Call IT Team if you need help';
+                        Ext.Msg.alert('failure', message );
+                    }
 
                 }
             });
         }
     },
 
-    processOnClick : function (){
+    processOnClick (){
+        console.log('processOnClick')
+        Ext.Ajax.request({
+            url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/preprocess',
+            method: 'GET',
+            success: function (response, opts){
+
+                var result = JSON.parse(response.responseText);
+                // console.log(result)
+                // jika belum digenerate baru.
+                if (!result.is_generated) {
+                    var form;
+                    if (form == undefined ) {
+                        form = Ext.create('Ext.window.Window', {
+                            title: 'Process Form',
+                            height: 300,
+                            width: 400,
+                            maximizable : true,
+                            layout: 'fit',
+                            modal :true,
+                            // frame: true,
+                            items: [{
+                                xtype : 'schedule_process_form',
+                                margin: '0',
+                                //set viewModel here
+                            }]
+                        }).show();
+                    }
+                    form.show();
+                }else{
+                    Ext.Msg.alert('Info', result.message)
+                }
+                
+            },
+            failure : function(response, opts){
+                console.log('failure')
+                console.log({
+                    response, opts
+                })
+                
+                Ext.Msg.alert('Info', 'Upps!! something went wrong.' );
+
+                
+            }
+        })
+    },
+
+    processOnClickObsolette : function (){
     	console.log('processOnClick')
         let self = this;
 
@@ -80,6 +137,9 @@ Ext.define('App.view.schedule.MainController', {
                 console.log({
                     response, opts
                 })
+
+                Ext.Msg.alert('Info', 'Upps!! something went wrong.' );
+
                 myMask.hide();
             }
         })
@@ -163,6 +223,144 @@ Ext.define('App.view.schedule.MainController', {
             })
             
         }
+    },
+
+    onProcessSubmit(button){
+        let self = this;
+
+        var myMask = new Ext.LoadMask({
+            msg    : 'Please wait...',
+            target : self.getView(),
+            hideAnimation: 'fadeOut',
+        });
+        
+        myMask.show();
+
+        var param = button.up('form').getForm().getValues();
+        Ext.Ajax.request({
+            url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/process',
+            params: param,
+            method: 'POST',
+            success: function (response, opts){
+                console.log({response, opts});
+                Ext.Msg.alert('Success', 'Great!!');
+            },
+            failure(response, opts){
+                console.log({
+                    response, opts
+                })
+                Ext.Msg.alert('Error!', 'Something Went Wrong');
+            },
+            callback(){
+                myMask.hide();
+            }
+        })
+    },
+
+    searchCodeOnClick(button){
+        var code = button.previousSibling('textfield[name=search_code]').value;
+        var store= Ext.getStore('Schedules');
+
+        if (code != '') {
+            store.load({
+                params: {
+                    code : code
+                }
+            })
+        }   
+    },
+
+    searchCodeOnEnter(component, e){
+        if (e.keyCode == 13) {
+            var button = component.nextSibling('button[name=btn-search]')
+            console.log({component, button})
+            if (button != undefined) {
+                button.click();
+            }
+        }
+    },
+
+    onRefresh(paggingtoolbar, page, opts){
+        /*console.log({
+            paggingtoolbar,
+            page,
+            opts
+        })*/
+
+        var code = Ext.getCmp('search_code');
+        console.log(code)
+        code.setValue('');
+    },
+
+    showDownloadForm(grid, rowIndex, colIndex ){
+        // console.log('show download form triggered')
+        var record = grid.getStore().getAt(rowIndex);
+        var data = record.data;
+
+        var form;
+        if (form == undefined ) {
+            form = Ext.create('Ext.window.Window', {
+                title: 'Download Form',
+                height: 250,
+                width: 400,
+                maximizable : true,
+                layout: 'fit',
+                modal :true,
+                // frame: true,
+                items: [{
+                    xtype : 'schedule_download_form',
+                    //set viewModel here
+                }]
+            })    
+        }
+        
+        //form == Ext.window.Window
+        let childform = form.getComponent(0);        
+        let hiddenTextfield = childform.getComponent(1) //karena si hiddenfield ini ada di index 1 dari form.
+        //setup id into hidden field  
+        hiddenTextfield.setValue(data.id);
+
+        form.show();
+    },
+
+    scheduleDownload(button) {
+        var form = button.up('form');
+        var hiddenfield = form.getComponent(1);
+        var id = hiddenfield.value;
+        var generatedType = form.getComponent(0).value;
+
+        // console.log({
+        //     id,
+        //     generatedType
+        // })
+
+        self = this;
+        let token = '?token='+ App.util.Config.getToken();
+        generatedType = '&generated_type='+ generatedType
+        url = 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/download/' + id + token + generatedType
+        
+        // kirim ajax untuk cek tidak ada error
+        Ext.Ajax.request({
+            url: url,
+            method: 'GET',
+            success(response, opts){
+                console.log({
+                    response,
+                    opts
+                })
+
+                window.open(url, '_blank')
+            },
+            failure(response, opts){
+                console.log({
+                    response,
+                    opts
+                })
+                Ext.Msg.alert('Error', response.responseText )
+            }
+        });
+        
+
     },
 
 });
