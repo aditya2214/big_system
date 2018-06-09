@@ -290,6 +290,77 @@ Ext.define('App.view.schedule.MainController', {
         var code = Ext.getCmp('search_code');
         console.log(code)
         code.setValue('');
-    }
+    },
+
+    showDownloadForm(grid, rowIndex, colIndex ){
+        // console.log('show download form triggered')
+        var record = grid.getStore().getAt(rowIndex);
+        var data = record.data;
+
+        var form;
+        if (form == undefined ) {
+            form = Ext.create('Ext.window.Window', {
+                title: 'Download Form',
+                height: 250,
+                width: 400,
+                maximizable : true,
+                layout: 'fit',
+                modal :true,
+                // frame: true,
+                items: [{
+                    xtype : 'schedule_download_form',
+                    //set viewModel here
+                }]
+            })    
+        }
+        
+        //form == Ext.window.Window
+        let childform = form.getComponent(0);        
+        let hiddenTextfield = childform.getComponent(1) //karena si hiddenfield ini ada di index 1 dari form.
+        //setup id into hidden field  
+        hiddenTextfield.setValue(data.id);
+
+        form.show();
+    },
+
+    scheduleDownload(button) {
+        var form = button.up('form');
+        var hiddenfield = form.getComponent(1);
+        var id = hiddenfield.value;
+        var generatedType = form.getComponent(0).value;
+
+        // console.log({
+        //     id,
+        //     generatedType
+        // })
+
+        self = this;
+        let token = '?token='+ App.util.Config.getToken();
+        generatedType = '&generated_type='+ generatedType
+        url = 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/download/' + id + token + generatedType
+        
+        // kirim ajax untuk cek tidak ada error
+        Ext.Ajax.request({
+            url: url,
+            method: 'GET',
+            success(response, opts){
+                console.log({
+                    response,
+                    opts
+                })
+
+                window.open(url, '_blank')
+            },
+            failure(response, opts){
+                console.log({
+                    response,
+                    opts
+                })
+                Ext.Msg.alert('Error', response.responseText )
+            }
+        });
+        
+
+    },
 
 });

@@ -27,7 +27,8 @@ Ext.define('App.Application', {
         'Histories',
         'ScheduleMasters',
         'ScheduleDates',
-        'Sides'
+        'Sides',
+        'Codes'
     ],
 
     launch: function () {

@@ -28,8 +28,21 @@ Ext.define('App.view.schedule.List', {
     columns: [
         {   
             text : 'No',
-            width : 60,
+            width : 50,
+            align: 'center',
             xtype: 'rownumberer'
+        },
+
+        {
+            xtype: 'actioncolumn',
+            tooltip: 'Download Schedules Code',
+            width: 30,
+            align: 'center',
+            items:[{
+                iconCls: 'x-fa fa-download',
+                tooltip: 'Download Generated Code',
+                handler: 'showDownloadForm',
+            }]
         },
 
         // { text: 'ID',  dataIndex: 'id' },
@@ -118,6 +131,61 @@ Ext.define('App.view.schedule.List', {
                 },
                 emptyText : 'Searh'
             }]
+        },
+
+        { 
+            text: 'Side',
+            dataIndex: 'models_side',
+            align: 'center',
+            // editor: {
+            //     xtype: 'combo',
+            //     store: 'Sides',
+            //     emptyText: 'Select Side',
+            //     queryMode : 'local',
+            //     // labelWidth:50,
+            //     displayField:'name',
+            //     valueField:'name',
+            // },
+            // flex: 5,
+            layout: {
+                type: 'vbox',
+                pack: 'center',
+                align: 'stretch'
+            },
+            items : [{
+                xtype:'textfield',
+                name: 'search_by_side_model',
+                margin : 4,
+                flex: 1,
+                enableKeyEvents: true,
+                listeners: {
+                    keyup: 'onSearch'
+                },
+                emptyText : 'Searh'
+            }]
+        },
+
+        { 
+            text: 'Cavity',
+            dataIndex: 'models_cavity',
+            align: 'center',
+            layout: {
+                type: 'vbox',
+                pack: 'center',
+                align: 'stretch'
+            },
+            // flex: 5,
+            // items : [{
+            //     xtype:'textfield',
+            //     name: 'search_by_code_model',
+            //     margin : 4,
+            //     flex: 1,
+            //     enableKeyEvents: true,
+            //     listeners: {
+            //         keyup: 'onSearch'
+            //     },
+            //     emptyText : 'Searh'
+            // }]
         },
 
         { 
