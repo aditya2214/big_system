@@ -4,6 +4,7 @@ Ext.define('App.store.Codes', {
     alias: 'store.codes',
 
     data :[
+    	{name: 'All'},
         {name: 'board_id'},
         {name: 'cavity_id'},
         

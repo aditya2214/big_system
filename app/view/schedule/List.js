@@ -39,7 +39,8 @@ Ext.define('App.view.schedule.List', {
             width: 30,
             align: 'center',
             items:[{
-                iconCls: 'x-fa fa-download',
+                // iconCls: 'x-fa fa-download',
+                icon : 'resources/download.png',
                 tooltip: 'Download Generated Code',
                 handler: 'showDownloadForm',
             }]
