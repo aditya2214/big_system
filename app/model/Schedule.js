@@ -12,8 +12,8 @@ Ext.define('App.model.Schedule', {
         { name: 'rev_date', type: 'auto' },
         { name: 'line', type: 'auto' },
         { name: 'lot_size', type: 'auto' },
-        { name: 'seq_start', type: 'int' },
-        { name: 'seq_end', type: 'int' },
+        { name: 'seq_start', type: 'auto' },
+        { name: 'seq_end', type: 'auto' },
         { name: 'start_serial', type: 'auto' },
         { name: 'qty', type: 'int' },
 
