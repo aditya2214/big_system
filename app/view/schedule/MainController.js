@@ -24,7 +24,6 @@ Ext.define('App.view.schedule.MainController', {
                 }]
             })    
         }
-
         form.show();
     },
 
@@ -159,6 +158,14 @@ Ext.define('App.view.schedule.MainController', {
             search_by_seq_start : Ext.ComponentQuery.query('textfield[name=search_by_seq_start]')[0],
             search_by_seq_end : Ext.ComponentQuery.query('textfield[name=search_by_seq_end]')[0],
             search_by_start_serial : Ext.ComponentQuery.query('textfield[name=search_by_start_serial]')[0],
+            search_by_start_serial : Ext.ComponentQuery.query('textfield[name=search_by_side_model]')[0],
+        }
+    },
+
+    clearSearchParameter(){
+        elements = this.getElement();
+        for (index in elements ){
+            elements[index].setValue('')
         }
     },
 
@@ -288,8 +295,8 @@ Ext.define('App.view.schedule.MainController', {
         })*/
 
         var code = Ext.getCmp('search_code');
-        console.log(code)
         code.setValue('');
+        this.clearSearchParameter()
     },
 
     showDownloadForm(grid, rowIndex, colIndex ){
@@ -328,25 +335,40 @@ Ext.define('App.view.schedule.MainController', {
         var hiddenfield = form.getComponent(1);
         var id = hiddenfield.value;
         var generatedType = form.getComponent(0).value;
+        var values = form.getValues();
 
         // console.log({
+        //     form,
+        //     hiddenfield,
         //     id,
-        //     generatedType
+        //     generatedType,
+        //     values
         // })
 
+        // return;
+
         self = this;
-        let token = '?token='+ App.util.Config.getToken();
-        generatedType = '&generated_type='+ generatedType
-        url = 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/download/' + id + token + generatedType
+        let param = {
+            generated_type  : generatedType
+        }
+        if (values.regenerate != undefined) {
+            param.regenerate = 'true'
+        }
+
+        param = this.serializeObj(param)
+
+        url = 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/download/' + id + '?'+ param
         
         // kirim ajax untuk cek tidak ada error
         Ext.Ajax.request({
             url: url,
-            method: 'GET',
+            method: 'GET',  
             success(response, opts){
+                // url = opts.getUrl()
                 console.log({
                     response,
-                    opts
+                    opts,
+                    url
                 })
 
                 window.open(url, '_blank')
@@ -359,8 +381,21 @@ Ext.define('App.view.schedule.MainController', {
                 Ext.Msg.alert('Error', response.responseText )
             }
         });
-        
-
     },
+
+    serializeObj(obj, prefix) {
+      //{a:1,b:2}
+      //return (Ext.os.is.Android ? encodeURIComponent(JSON.stringify(params)) : params)
+      var str = [], p;
+      for(p in obj) {
+        if (obj.hasOwnProperty(p)) {
+          var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
+          str.push((v !== null && typeof v === "object") ?
+            this.serializeObj(v, k) :
+            encodeURIComponent(k) + "=" + encodeURIComponent(v));
+        }
+      }
+      return str.join("&");
+    }
 
 });

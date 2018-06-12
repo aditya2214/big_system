@@ -46,10 +46,18 @@ Ext.define('App.view.schedule.Downloadform',{
             valueField:'name',
         },
         {
+            // this should always be in here. (in index 1)
             xtype: 'hiddenfield',
             name: 'code_holder',
-            
-        }
+        },
+        {
+            xtype     : 'checkbox',
+            margin    : '0 0 0 80',
+            boxLabel  : 'Regenerate ??',
+            name      : 'regenerate',
+            inputValue: true,
+            id        : 'regenerate',
+        },
     ],
 
     buttons : [{

@@ -12,7 +12,16 @@ Ext.define('App.view.model.List', {
     
     plugins: {
         ptype: 'rowediting',
-        clicksToEdit: 2
+        clicksToEdit: 2,
+        listeners: {
+            cancelEdit: function(rowEditing, context) {
+                // Canceling editing of a locally added, unsaved record: remove it
+                if (context.record.phantom) {
+                    var store = Ext.data.StoreManager.lookup('Mastermodels');
+                    store.remove(context.record);
+                }
+            }
+        }
     },
 
     frame: true,
@@ -29,7 +38,29 @@ Ext.define('App.view.model.List', {
             align: 'center',
         },
 
-        // { text: 'ID',  dataIndex: 'id' },
+        {
+            xtype: 'actioncolumn',
+            tooltip: 'Delete Model',
+            width: 30,
+            align: 'center',
+            items:[{
+                // iconCls: 'x-fa fa-download',
+                icon : 'resources/delete.png',
+                tooltip: 'Delete',
+                handler: 'onDelete',
+            },]
+        },
+
+        {
+            xtype: 'actioncolumn',
+            tooltip: 'Information',
+            width: 30,
+            align: 'center',
+            items:[{
+                icon : 'resources/info.png',
+                tooltip: 'klik dua kali pada row untuk edit'
+            }]
+        },
         
         { 
             text: 'Model Name',
@@ -209,7 +240,8 @@ Ext.define('App.view.model.List', {
         pageSize: 50,
         store : 'Mastermodels',
         emptyMsg: 'Sorry, No Records Are Available At The Moment.',   
-        displayInfo: true
+        displayInfo: true,
+
     }],
 
 });

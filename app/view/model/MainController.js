@@ -2,8 +2,28 @@ Ext.define('App.view.model.MainController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.model-main',
 
-    onAddClick : function (){
-    	console.log('onAddClick')
+    onAddClick : function (button, event){
+    	//buat model baru
+        let store = Ext.getStore('Mastermodels');
+        let main = this.getView(); //MainView
+        let grid = Ext.ComponentQuery.query('model_list')[0]; //cari xtype = model_list
+        let rowediting = grid.getPlugin();
+
+        store.setAutoSync(false);
+
+        var record = Ext.create('App.model.Mastermodel', {
+            name : '',
+            pwbname:'',
+            pwbno : '',
+            process: '',
+
+        });
+        //input ke store
+        store.insert(0, record);
+        rowediting.startEdit(record, 0);
+        store.setAutoSync(true);
+        //save
+
     },
 
     uploadOnClick : function(){
@@ -147,6 +167,38 @@ Ext.define('App.view.model.MainController', {
     	}
 
     	return result;
+    },
+
+    onDelete(grid,rowIndex,colIndex){
+        console.log({
+            grid,
+            rowIndex,
+            colIndex
+        })
+
+
+        if (grid) {
+            // console.log(grid);
+            var model = grid.getStore().getAt(rowIndex);
+            
+            if (!model) {
+              Ext.Msg.alert('Info', 'No Record Selected');
+              return;
+            }
+
+            console.log({model})
+            
+            Ext.Msg.confirm('Remove Record', 
+              'Are you sure you want to delete?', 
+              function (button) {
+                if (button == 'yes') {
+                  grid.store.remove(model);
+                  grid.store.sync()
+                  // self.onCancel();
+
+                }
+            });
+        }
     }
 
 });
