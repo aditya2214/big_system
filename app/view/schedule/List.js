@@ -52,6 +52,7 @@ Ext.define('App.view.schedule.List', {
             text: 'Model Name',
             dataIndex: 'model', 
             flex: 1,
+            align: 'left',
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -95,6 +96,7 @@ Ext.define('App.view.schedule.List', {
             text: 'PWB Name',
             dataIndex: 'pwbname', 
             //flex: 5,
+            align: 'left',
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -116,6 +118,7 @@ Ext.define('App.view.schedule.List', {
             text: 'Process',
             dataIndex: 'process',
             //flex: 5,
+            align: 'left',
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -193,6 +196,7 @@ Ext.define('App.view.schedule.List', {
             text: 'Qty',
             dataIndex: 'qty',
             //flex: 5,
+            align: 'center',
             layout: {
                 type: 'vbox',
                 pack: 'center',
@@ -259,6 +263,7 @@ Ext.define('App.view.schedule.List', {
             text: 'Line',
             dataIndex: 'line',
             //flex: 5,
+            align: 'left',
             layout: {
                 type: 'vbox',
                 pack: 'center',

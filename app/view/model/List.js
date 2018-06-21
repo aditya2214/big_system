@@ -58,7 +58,8 @@ Ext.define('App.view.model.List', {
             align: 'center',
             items:[{
                 icon : 'resources/info.png',
-                tooltip: 'klik dua kali pada row untuk edit'
+                tooltip: 'klik dua kali pada row untuk edit',
+                handler : 'infoOnClick'
             }]
         },
         

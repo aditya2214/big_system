@@ -302,7 +302,10 @@ Ext.define('App.view.history.List', {
         pageSize: 50,
         store : 'Histories',
         emptyMsg: 'Sorry, No Records Are Available At The Moment.',   
-        displayInfo: true
+        displayInfo: true,
+        listeners: {
+            beforechange : 'clearSearchElement'
+        },
     }],
 
 });

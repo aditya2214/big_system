@@ -205,6 +205,13 @@ Ext.define('App.view.model.MainController', {
         console.log('onDownload')
         let url = 'http://localhost/big/public/api/models/download';
         window.open(url, '_blank');
+    },
+
+    infoOnClick(){
+        // parameter 1=judul, 2 = message
+        Ext.Msg.alert('Info', 'Klik dua kali pada row untuk edit!');
+
     }
+
 
 });
