@@ -70,7 +70,7 @@ Ext.define('App.view.history.HistoryController', {
       search_by_pwbno  : Ext.ComponentQuery.query('textfield[name=search_by_pwbno]')[1],
       search_by_pwbname : Ext.ComponentQuery.query('textfield[name=search_by_pwbname]')[1],
       search_by_process : Ext.ComponentQuery.query('textfield[name=search_by_process]')[1],
-      search_by_code : Ext.ComponentQuery.query('textfield[name=search_by_code]')[1],
+      search_by_code : Ext.ComponentQuery.query('textfield[name=search_by_code]')[0],
       search_by_prod_no : Ext.ComponentQuery.query('textfield[name=search_by_prod_no]')[1],
       search_by_rev_date : Ext.ComponentQuery.query('textfield[name=search_by_rev_date]')[1],
       search_by_line : Ext.ComponentQuery.query('textfield[name=search_by_line]')[1],

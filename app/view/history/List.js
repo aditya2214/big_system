@@ -122,7 +122,7 @@ Ext.define('App.view.history.List', {
 
         { 
             text: 'Code',
-            dataIndex: 'code',
+            dataIndex: 'model_code',
             flex: 5,
             layout: {
                 type: 'vbox',

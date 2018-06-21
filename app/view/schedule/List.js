@@ -204,7 +204,7 @@ Ext.define('App.view.schedule.List', {
             },
             items : [{
                 xtype:'textfield',
-                name: 'search_by_code',
+                name: 'search_by_qty',
                 margin : 4,
                 flex: 1,
                 enableKeyEvents: true,
