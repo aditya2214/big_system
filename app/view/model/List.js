@@ -241,7 +241,12 @@ Ext.define('App.view.model.List', {
         store : 'Mastermodels',
         emptyMsg: 'Sorry, No Records Are Available At The Moment.',   
         displayInfo: true,
-
+        items:[{
+            iconCls: 'fa fa-download',
+            tooltip: 'download data',
+            xtype:'button',
+            handler: 'onDownload'
+        }]
     }],
 
 });

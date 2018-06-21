@@ -396,6 +396,11 @@ Ext.define('App.view.schedule.MainController', {
         }
       }
       return str.join("&");
+    },
+
+    onDownload(){
+        let url = 'http://localhost/big/public/api/schedule_details/download';
+        window.open(url, '_blank');
     }
 
 });

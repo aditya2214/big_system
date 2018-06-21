@@ -199,6 +199,12 @@ Ext.define('App.view.model.MainController', {
                 }
             });
         }
+    },
+
+    onDownload(){
+        console.log('onDownload')
+        let url = 'http://localhost/big/public/api/models/download';
+        window.open(url, '_blank');
     }
 
 });

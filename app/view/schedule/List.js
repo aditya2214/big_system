@@ -375,6 +375,12 @@ Ext.define('App.view.schedule.List', {
         listeners: {
             beforechange : 'onRefresh'
         },
+        items:[{
+            iconCls: 'fa fa-download',
+            tooltip: 'download data',
+            xtype:'button',
+            handler: 'onDownload'
+        }]
 
     }],
 
