@@ -107,10 +107,9 @@ Ext.define('App.view.model.MainController', {
             self = this;
             params = this.getElementValue();
     		
-    		/*console.log({
-    			store,
+    		console.log({
     			params
-    		})*/
+    		})
 
             store.load({
                 params: params,
@@ -140,6 +139,7 @@ Ext.define('App.view.model.MainController', {
 			search_by_process: Ext.ComponentQuery.query('textfield[name=search_by_process_model]')[0],
 			search_by_code: Ext.ComponentQuery.query('textfield[name=search_by_code_model]')[0],
             search_by_cavity: Ext.ComponentQuery.query('textfield[name=search_by_cavity_model]')[0],
+            search_by_side_model:Ext.ComponentQuery.query('textfield[name=search_by_side_model]')[1],
 
     	};
     },
@@ -154,9 +154,10 @@ Ext.define('App.view.model.MainController', {
     		process: elements.search_by_process.value,
     		code: elements.search_by_code.value,
             cavity : elements.search_by_cavity.value,
+            side : elements.search_by_side_model.value,
     	}
 
-    	// return elementsValue;
+    	console.log({elementsValue, elements });
 
     	let result = {}
     	var key;
@@ -210,8 +211,15 @@ Ext.define('App.view.model.MainController', {
     infoOnClick(){
         // parameter 1=judul, 2 = message
         Ext.Msg.alert('Info', 'Klik dua kali pada row untuk edit!');
+    },
 
-    }
+    onRefresh(paggingtoolbar, page, opts){
+        let elements = this.getElement(); 
+
+        for( i in elements ){
+            elements[i].setValue('');
+        }
+    },
 
 
 });
