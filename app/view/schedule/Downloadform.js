@@ -40,7 +40,7 @@ Ext.define('App.view.schedule.Downloadform',{
             store : 'Codes',
             valueField: 'name',
             allowBlank: false,
-            emptyText: 'Select Side',
+            emptyText: 'Select Download Type',
             queryMode : 'local',
             displayField:'name',
             valueField:'name',
@@ -57,6 +57,10 @@ Ext.define('App.view.schedule.Downloadform',{
             name      : 'regenerate',
             inputValue: true,
             id        : 'regenerate',
+            autoEl: {
+                tag: 'div',
+                'data-qtip': 'check this to make sure the data you download will be regenerate'
+            }
         },
     ],
 
