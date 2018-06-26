@@ -160,7 +160,7 @@ Ext.define('App.view.model.List', {
         { 
             text: 'cavity',
             dataIndex: 'cavity',
-            editor: 'textfield',
+            editor: 'numberfield',
             align: 'center',
             flex: 5,
             layout: {

@@ -107,16 +107,16 @@ Ext.define('App.view.model.MainController', {
             self = this;
             params = this.getElementValue();
     		
-    		console.log({
-    			params
-    		})
+    		// console.log({
+    		// 	params
+    		// })
 
             store.load({
                 params: params,
                 callback: function(records,operation,success){
-                    console.log({
-                    	records, operation, success
-                    })
+                    // console.log({
+                    // 	records, operation, success
+                    // })
                     /*if(model != null){
                         
                     }else{
