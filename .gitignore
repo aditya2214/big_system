@@ -15,5 +15,4 @@ resources/.arch-internal-preview.css
 .arch-internal-preview.css
 overrides/
 packages/
-sass/
 *.log
