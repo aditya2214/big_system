@@ -78,7 +78,7 @@ Ext.define('App.view.login.LoginController', {
             },
             failure: function(response, opts) {
 		        console.log({response, opts})
-                error = JSON.parse(response.responseText).error.message;
+                error = JSON.parse(response.responseText).message;
                 Ext.Msg.alert('Error', error );
 		    }
         });
