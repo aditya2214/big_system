@@ -17,15 +17,15 @@ Ext.define('App.view.login.LoginController', {
         var email = Ext.ComponentQuery.query('textfield[name=email]')[0];
         var password = Ext.ComponentQuery.query('textfield[name=password]')[0];
 
-        console.log({
-        	email: email.value, 
-        	password: password.value 
-        })
+        // console.log({
+        // 	email: email.value, 
+        // 	password: password.value 
+        // })
 
         self = this;
 
         Ext.Ajax.request({
-            url: 'http://'+App.util.Config.hostname()+'/tool_control/public/api/auth/login',
+            url: 'http://'+App.util.Config.hostname()+'/big/public/api/auth/login',
             method: 'POST',
             params: {
             	email   : email.value, 
@@ -51,19 +51,19 @@ Ext.define('App.view.login.LoginController', {
                         token : token
                     },
                     success: function (response, opts){
-                        console.log({response, opts})
-                        res = JSON.parse(response.responseText);
-                        level = res.access_level;
+                        // console.log({response, opts})
+                        // res = JSON.parse(response.responseText);
+                        // level = res.access_level;
 
                         //set user json in localStorage
                         localStorage.setItem('user', response.responseText );
 
                         // console.log(level) 
-                        /*Ext.create({
-                            xtype: 'app-main',
+                        // Ext.create({
+                        //     xtype: 'app-main',
 
-                            access_level : level
-                        });*/
+                        //     // access_level : level
+                        // });
 
                         location.reload(); //this reload is to make sure that every store get to proper token
                     },

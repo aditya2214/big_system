@@ -17,5 +17,28 @@ Ext.define('App.view.main.MainController', {
         if (choice === 'yes') {
             //
         }
-    }
+    },
+
+    onLogOut(){
+        
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+
+
+        // Remove Main View
+        this.getView().destroy();
+
+        // Add the Login Window
+        Ext.create({
+            xtype: 'login'
+        });
+    },
+
+    showWorkingIntruction(){
+        // location = App.util.Config.hostname() + '/big/public/'
+        var link = 'http://'+App.util.Config.hostname()+'/big/public/';
+        window.open(link);
+    },
+
 });

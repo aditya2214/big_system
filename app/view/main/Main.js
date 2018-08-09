@@ -7,6 +7,7 @@
  */
 Ext.define('App.view.main.Main', {
     extend: 'Ext.tab.Panel',
+
     xtype: 'app-main',
 
     requires: [
@@ -20,11 +21,12 @@ Ext.define('App.view.main.Main', {
         'App.view.model.Main',
         'App.view.schedule.Main',
         'App.view.history.History',
-
-
     ],
 
     controller: 'main',
+    
+    plugins: 'viewport',
+
     viewModel: 'main',
 
     ui: 'navigation',
@@ -82,7 +84,8 @@ Ext.define('App.view.main.Main', {
         }
     },
 
-    items: [ {
+    items: [ 
+        {
             title: 'Schedules',
             iconCls: 'fa-calendar',
             items:[{
@@ -102,11 +105,38 @@ Ext.define('App.view.main.Main', {
             items: [{
                 xtype: 'history_main'
             }]
-        }, /*{
-            title: 'Settings',
-            iconCls: 'fa-cog',
-            bind: {
-                html: '{loremIpsum}'
-            }
-    }*/]
+        },{
+            title: 'Read ME!!',
+            iconCls: 'fa fa-info',
+            tabConfig: {
+                layout: {
+                    align: 'stretch',
+                    overflowHandler: 'none'
+                },
+                listeners: {
+                    click: 'showWorkingIntruction'
+                },
+                iconAlign: 'left',
+                textAlign: 'left'
+            } 
+        },{
+            title: 'Log out',
+            iconCls: 'fa-sign-out',
+            tabConfig: {
+                layout: {
+                    align: 'stretch',
+                    overflowHandler: 'none'
+                },
+                listeners: {
+                    click: 'onLogOut'
+                },
+                iconAlign: 'left',
+                textAlign: 'left'
+            }      
+        }
+    ],
+
+    // initItems(){
+    //     this.callParent();
+    // }
 });

@@ -12,6 +12,8 @@ Ext.define('App.Application', {
 
     requires: [
         'App.util.Config',
+        'App.view.login.Login',
+        'App.view.main.Main',
     ],
 
     platformConfig: {
@@ -33,6 +35,37 @@ Ext.define('App.Application', {
 
     launch: function () {
         // TODO - Launch the application
+        self = this;
+        token = App.util.Config.getToken();
+
+        Ext.Ajax.request({
+            url: 'http://'+App.util.Config.hostname()+'/big/public/api/auth/me',
+            method: 'GET',
+            params: {
+                token : token
+            },
+            success: function (response, opts){
+                // console.log({response, opts})
+                res = JSON.parse(response.responseText);
+                // level = res.access_level;
+
+                //set user, for get the specific supplier id
+                localStorage.setItem('user', response.responseText );
+
+                // console.log(res)
+
+                Ext.create({
+                    xtype: 'app-main'
+                });
+
+            },
+            failure: function(response, opts) {
+                // console.log({response, opts})
+                Ext.create({
+                    xtype: 'login'
+                });
+            }
+        });
     },
 
     onAppUpdate: function () {
