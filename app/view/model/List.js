@@ -87,6 +87,29 @@ Ext.define('App.view.model.List', {
         },
 
         { 
+            text: 'Y Number',
+            dataIndex: 'ynumber', 
+            flex: 1,
+            editor: 'textfield',
+            align: 'center',
+            layout: {
+                type: 'vbox',
+                pack: 'center',
+                align: 'stretch'
+            },
+            items : [{
+                xtype:'textfield',
+                name: 'search_by_ynumber',
+                margin : 4,
+                emptyText : 'Searh',
+                enableKeyEvents: true,
+                listeners: {
+                    keyup: 'onSearch'
+                }
+            }] 
+        },
+
+        { 
             text: 'PWBNO',
             dataIndex: 'pwbno',
             editor: 'textfield',

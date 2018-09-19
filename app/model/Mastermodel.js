@@ -10,6 +10,7 @@ Ext.define('App.model.Mastermodel', {
         { name: 'code', type: 'auto' },
         { name: 'cavity', type: 'auto' },
         { name: 'side', type: 'auto' },
+        { name: 'ynumber', type: 'auto' },
     	
     ]
     
