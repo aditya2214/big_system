@@ -33,7 +33,7 @@ Ext.define('App.store.Mastermodels', {
         }else{
             var response = opt.error.response.responseText;
             response = JSON.parse(response);
-            error = response.error.message;
+            error = response.message;
             Ext.Msg.alert('Error', error );
         }
     }

@@ -9,6 +9,8 @@ Ext.define('App.view.subtype.Main',{
         'App.view.subtype.List',
 
         'App.view.subtype.Toolbar',
+
+        'App.view.subtype.CreateForm',
     ],
 
     controller: 'subtype-main',
@@ -29,14 +31,18 @@ Ext.define('App.view.subtype.Main',{
     frame: true,
 
     items:[
-        {
+        /*{
             xtype: 'subtype_toolbar',
             region : 'north',
             // height :200
-        },
+        },*/
         {
             xtype: 'subtype_list',
             region : 'center'
-        }
+        },
+        {
+            xtype: 'subtype_create_form',
+            region : 'west'
+        },
     ]
 });

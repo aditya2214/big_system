@@ -17,7 +17,7 @@ Ext.define('App.view.subtype.List', {
             cancelEdit: function(rowEditing, context) {
                 // Canceling editing of a locally added, unsaved record: remove it
                 if (context.record.phantom) {
-                    var store = Ext.data.StoreManager.lookup('subtypes');
+                    var store = Ext.data.StoreManager.lookup('Subtypes');
                     store.remove(context.record);
                 }
             }
@@ -66,7 +66,7 @@ Ext.define('App.view.subtype.List', {
         { 
             text: 'subtype name',
             dataIndex: 'name', 
-            flex: 4,
+            width: 100,
             editor: 'textfield',
             align: 'center',
             layout: {
@@ -89,7 +89,7 @@ Ext.define('App.view.subtype.List', {
         { 
             text: 'modelname',
             dataIndex: 'modelname', 
-            flex: 4,
+            width: 100,
             align: 'center',
             layout: {
                 type: 'vbox',

@@ -2,20 +2,50 @@ Ext.define('App.view.subtype.MainController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.subtype-main',
 
-    onAddClick : function (button, event){
+    onAddClick : function (){
+        console.log('uploadOnClick')
+        Ext.create('Ext.window.Window', {
+            title: 'Model Upload Form',
+            height: 300,
+            width: 600,
+            maximizable : true,
+            layout: 'fit',
+            modal :true,
+            // frame: true,
+            items: [{
+                xtype : 'subtype_create_form',
+                //set viewModel here
+            }]
+        }).show();
+    },
+
+    onSubmit(){
+        let viewModel = this.getViewModel()
+        let newSubtype = viewModel.getData().model;
+        let store = Ext.getStore('Subtypes');
+        
+        console.log(newSubtype)
+        
+        // store.setAutoSync(false);
+        
+        store.insert(0, newSubtype );
+        
+        // store.setAutoSync(true);
+    },
+
+    onAddClickBackup : function (button, event){
     	//buat model baru
-        let store = Ext.getStore('Mastermodels');
+        let store = Ext.getStore('Subtypes');
         let main = this.getView(); //MainView
-        let grid = Ext.ComponentQuery.query('model_list')[0]; //cari xtype = model_list
+        let grid = Ext.ComponentQuery.query('subtype_list')[0]; //cari xtype = model_list
         let rowediting = grid.getPlugin();
 
         store.setAutoSync(false);
 
-        var record = Ext.create('App.model.Mastermodel', {
+        var record = Ext.create('App.model.Subtype', {
             name : '',
-            pwbname:'',
-            pwbno : '',
-            process: '',
+            modelname:'',
+            model_id : '',
 
         });
         //input ke store
@@ -89,7 +119,7 @@ Ext.define('App.view.subtype.MainController', {
                     response, opts
                 })
                 myMask.hide();
-                Ext.getStore('Mastermodels').load();
+                Ext.getStore('Subtypes').load();
             },
             failure : function(response, opts){
                 console.log('failure')
@@ -103,7 +133,7 @@ Ext.define('App.view.subtype.MainController', {
 
     onSearch : function (component, e){
     	if (e.keyCode == 13) {
-    		store = Ext.getStore('Mastermodels') //this.getViewModel().getStore('tools');
+    		store = Ext.getStore('Subtypes') //this.getViewModel().getStore('tools');
             self = this;
             params = this.getElementValue();
     		
