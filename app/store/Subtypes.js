@@ -6,6 +6,7 @@ Ext.define('App.store.Subtypes', {
     alias: 'store.subtypes',
 
     autoLoad: true,
+    autoSync:true,
 
     proxy: {
         type: 'rest',

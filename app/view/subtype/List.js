@@ -113,7 +113,7 @@ Ext.define('App.view.subtype.List', {
     bbar: [{
         xtype: 'pagingtoolbar',
         pageSize: 50,
-        store : 'Mastermodels',
+        store : 'Subtypes',
         emptyMsg: 'Sorry, No Records Are Available At The Moment.',   
         displayInfo: true,
         listeners: {
