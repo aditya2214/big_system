@@ -30,7 +30,8 @@ Ext.define('App.Application', {
         'ScheduleMasters',
         'ScheduleDates',
         'Sides',
-        'Codes'
+        'Codes',
+        'Subtypes',
     ],
 
     launch: function () {

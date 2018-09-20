@@ -20,6 +20,8 @@ Ext.define('App.view.main.Main', {
 
         'App.view.model.Main',
         'App.view.schedule.Main',
+        'App.view.subtype.Main',
+
         'App.view.history.History',
     ],
 
@@ -98,6 +100,14 @@ Ext.define('App.view.main.Main', {
             // The following grid shares a store with the classic version's grid as well!
             items: [{
                 xtype: 'model_main'
+            }]
+        },{
+            title: 'Subtypes',
+            iconCls: 'fa-child',
+            // icon: 'resources/pcb-20.png',
+            // The following grid shares a store with the classic version's grid as well!
+            items: [{
+                xtype: 'subtype_main'
             }]
         }, {
             title: 'History',
