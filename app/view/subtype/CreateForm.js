@@ -46,13 +46,15 @@ Ext.define('App.view.subtype.CreateForm',{
         },
         {
             xtype: 'textfield',
-            name: 'part_name',
+            name: 'subtype_name',
             fieldLabel: 'Subtype Name',
             emptyText : 'Subtype Name',
             allowBlank: false,
             bind: {
                 value : '{model.name}',
             },
+            maxLength : 1,
+            enforceMaxLength : true, //to prevent users input more than maxLength
         },
     ],
 
