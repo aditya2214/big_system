@@ -24,13 +24,19 @@ Ext.define('App.view.subtype.MainController', {
         let newSubtype = viewModel.getData().model;
         let store = Ext.getStore('Subtypes');
         
-        console.log(newSubtype)
+        newSubtype = new App.model.Subtype(newSubtype)
+
+        console.log({newSubtype, store})
         
         // store.setAutoSync(false);
         
-        store.insert(0, newSubtype );
-        
+        store.add( newSubtype );
+        // store.sync()
         // store.setAutoSync(true);
+        viewModel.setData({model : {
+            model_id : null,
+            name     : null,
+        }})
     },
 
     onAddClickBackup : function (button, event){

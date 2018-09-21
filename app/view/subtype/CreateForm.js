@@ -18,7 +18,7 @@ Ext.define('App.view.subtype.CreateForm',{
     
     // title: 'Upload Form',
 
-    // frame: true,
+    frame: true,
 
     resizable: true,
 
