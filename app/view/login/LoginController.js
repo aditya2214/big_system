@@ -25,7 +25,7 @@ Ext.define('App.view.login.LoginController', {
         self = this;
 
         Ext.Ajax.request({
-            url: 'http://'+App.util.Config.hostname()+'/big/public/api/auth/login',
+            url: 'http://'+App.util.Config.hostname()+'/auth/login',
             method: 'POST',
             params: {
             	email   : email.value, 
@@ -45,7 +45,7 @@ Ext.define('App.view.login.LoginController', {
 
 		        // Add the main view to the viewport
 		        Ext.Ajax.request({
-                    url: 'http://'+App.util.Config.hostname()+'/tool_control/public/api/auth/me',
+                    url: 'http://'+App.util.Config.hostname()+'/auth/me',
                     method: 'GET',
                     params: {
                         token : token

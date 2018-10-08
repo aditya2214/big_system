@@ -16,7 +16,7 @@ Ext.define('App.store.ScheduleMasters', {
             token : App.util.Config.getToken() //
         },
 
-        url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedules',
+        url: 'http://'+App.util.Config.hostname()+'/schedules',
         
         reader: {
             type: 'json',

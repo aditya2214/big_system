@@ -34,7 +34,7 @@ Ext.define('App.view.schedule.MainController', {
         // return ;
         if(form.isValid()) {
             form.submit({
-                url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/upload',
+                url: 'http://'+App.util.Config.hostname()+'/schedule_details/upload',
                 waitMsg: 'Processing...',
                 success: function(fp, o) {
                     console.log({
@@ -62,7 +62,7 @@ Ext.define('App.view.schedule.MainController', {
     processOnClick (){
         console.log('processOnClick')
         Ext.Ajax.request({
-            url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/preprocess',
+            url: 'http://'+App.util.Config.hostname()+'/schedule_details/preprocess',
             method: 'GET',
             success: function (response, opts){
 
@@ -118,7 +118,7 @@ Ext.define('App.view.schedule.MainController', {
         myMask.show();
 
         Ext.Ajax.request({
-            url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/process',
+            url: 'http://'+App.util.Config.hostname()+'/schedule_details/process',
             method: 'POST',
             /*params: {
                 token : token
@@ -245,7 +245,7 @@ Ext.define('App.view.schedule.MainController', {
 
         var param = button.up('form').getForm().getValues();
         Ext.Ajax.request({
-            url: 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/process',
+            url: 'http://'+App.util.Config.hostname()+'/schedule_details/process',
             params: param,
             method: 'POST',
             success: function (response, opts){
@@ -357,7 +357,7 @@ Ext.define('App.view.schedule.MainController', {
 
         param = this.serializeObj(param)
 
-        url = 'http://'+App.util.Config.hostname()+'/big/public/api/schedule_details/download/' + id + '?'+ param
+        url = 'http://'+App.util.Config.hostname()+'/schedule_details/download/' + id + '?'+ param
         
         // kirim ajax untuk cek tidak ada error
         Ext.Ajax.request({

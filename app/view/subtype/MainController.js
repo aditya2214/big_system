@@ -86,7 +86,7 @@ Ext.define('App.view.subtype.MainController', {
         // return ;
         if(form.isValid()) {
             form.submit({
-                url: 'http://'+App.util.Config.hostname()+'/big/public/api/models/upload',
+                url: 'http://'+App.util.Config.hostname()+'/models/upload',
                 waitMsg: 'Processing...',
                 success: function(fp, o) {
                     Ext.Msg.alert('Success', o.result );
@@ -114,7 +114,7 @@ Ext.define('App.view.subtype.MainController', {
         myMask.show();
 
         Ext.Ajax.request({
-            url: 'http://'+App.util.Config.hostname()+'/big/public/api/models/process',
+            url: 'http://'+App.util.Config.hostname()+'/models/process',
             method: 'POST',
             /*params: {
                 token : token

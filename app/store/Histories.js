@@ -16,7 +16,7 @@ Ext.define('App.store.Histories', {
             token : App.util.Config.getToken() //
         },
 
-        url: 'http://'+App.util.Config.hostname()+'/big/public/api/histories',
+        url: 'http://'+App.util.Config.hostname()+'/histories',
         
         reader: {
             type: 'json',

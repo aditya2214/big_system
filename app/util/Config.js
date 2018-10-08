@@ -9,13 +9,16 @@ Ext.define('App.util.Config', {
         this.initConfig(config);
         this.callParent([config]);
     },
+    
+    backendName : "/big", // it's configurable;
 
     hostname: function(){
-    	if ( window.location.hostname == 'localhost'){
+    	/*if ( window.location.hostname == 'localhost'){
 		    return 'localhost';
 		}else{
             return  window.location.hostname;
-        }
+        }*/
+        return window.location.hostname + this.backendName + "/public/api";
                 
  	},
     getUser: function (){

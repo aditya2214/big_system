@@ -18,7 +18,7 @@ Ext.define('App.store.Mastermodels', {
             token : App.util.Config.getToken() //
         },
 
-        url: 'http://'+App.util.Config.hostname()+'/big/public/api/models',
+        url: 'http://'+App.util.Config.hostname()+'/models',
         
         reader: {
             type: 'json',

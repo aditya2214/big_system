@@ -40,7 +40,7 @@ Ext.define('App.Application', {
         token = App.util.Config.getToken();
 
         Ext.Ajax.request({
-            url: 'http://'+App.util.Config.hostname()+'/big/public/api/auth/me',
+            url: 'http://'+App.util.Config.hostname()+'/auth/me',
             method: 'GET',
             params: {
                 token : token

@@ -17,7 +17,7 @@ Ext.define('App.store.Subtypes', {
             token : App.util.Config.getToken() //
         },*/
 
-        url: 'http://'+App.util.Config.hostname()+'/big/public/api/subtypes',
+        url: 'http://'+App.util.Config.hostname()+'/subtypes',
         
         reader: {
             type: 'json',
