@@ -10,7 +10,7 @@ Ext.define('App.util.Config', {
         this.callParent([config]);
     },
     
-    backendName : "/big", // it's configurable;
+    backendName : "/big24", // it's configurable;
 
     hostname: function(){
     	/*if ( window.location.hostname == 'localhost'){

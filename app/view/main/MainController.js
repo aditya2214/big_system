@@ -37,7 +37,9 @@ Ext.define('App.view.main.MainController', {
 
     showWorkingIntruction(){
         // location = App.util.Config.hostname() + '/big/public/'
-        var link = 'http://'+App.util.Config.hostname()+'/big/public/';
+        // link to documentation wrong;
+        var link = 'http://'+App.util.Config.hostname();
+        link = link.substr(0, link.length - 3 ); // changes become big/public/
         window.open(link);
     },
 
