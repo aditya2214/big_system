@@ -378,7 +378,8 @@ Ext.define('App.view.schedule.MainController', {
                     response,
                     opts
                 })
-                Ext.Msg.alert('Error', response.responseText )
+                var responseText = JSON.parse(response.responseText)
+                Ext.Msg.alert('Error', responseText.message )
             }
         });
     },
