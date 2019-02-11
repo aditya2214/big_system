@@ -147,6 +147,7 @@ Ext.define('App.view.schedule.MainController', {
     getElement : function (){
         return {
             search_by_name : Ext.ComponentQuery.query('textfield[name=search_by_name]')[0],
+            search_by_ynumber: Ext.ComponentQuery.query('textfield[name=search_by_ynumber]')[0],
             search_by_pwbno  : Ext.ComponentQuery.query('textfield[name=search_by_pwbno]')[0],
             search_by_pwbname : Ext.ComponentQuery.query('textfield[name=search_by_pwbname]')[0],
             search_by_process : Ext.ComponentQuery.query('textfield[name=search_by_process]')[0],
@@ -173,7 +174,8 @@ Ext.define('App.view.schedule.MainController', {
         var elements = this.getElement();
 
         var elementsValue = {
-            name: elements.search_by_name.value,
+            ynumber: elements.search_by_ynumber.value,
+            model: elements.search_by_name.value,
             pwbno: elements.search_by_pwbno.value,
             pwbname: elements.search_by_pwbname.value,
             process: elements.search_by_process.value,
