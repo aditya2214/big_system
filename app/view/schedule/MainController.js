@@ -298,7 +298,15 @@ Ext.define('App.view.schedule.MainController', {
 
         var code = Ext.getCmp('search_code');
         code.setValue('');
-        this.clearSearchParameter()
+        this.clearSearchParameter();
+    },
+
+    beforechange(paggingtoolbar, page, opts){
+        let params = this.getElementValue();
+        let store = Ext.getStore('Schedules');
+
+        console.log(params)
+        store.getProxy().setExtraParams(params);
     },
 
     showDownloadForm(grid, rowIndex, colIndex ){

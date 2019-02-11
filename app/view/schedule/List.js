@@ -400,13 +400,18 @@ Ext.define('App.view.schedule.List', {
         emptyMsg: 'Sorry, No Records Are Available At The Moment.',   
         displayInfo: true,
         listeners: {
-            beforechange : 'onRefresh'
+            beforechange : 'beforechange'
         },
         items:[{
             iconCls: 'fa fa-download',
             tooltip: 'download data',
             xtype:'button',
             handler: 'onDownload'
+        },{
+            iconCls: 'fa fa-trash',
+            tooltip: 'clear search',
+            xtype:'button',
+            handler: 'onRefresh'
         }]
 
     }],
