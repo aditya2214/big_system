@@ -161,7 +161,7 @@ Ext.define('App.view.schedule.List', {
 
         { 
             text: 'Side',
-            dataIndex: 'models_side',
+            dataIndex: 'side',
             align: 'center',
             // editor: {
             //     xtype: 'combo',
@@ -193,7 +193,7 @@ Ext.define('App.view.schedule.List', {
 
         { 
             text: 'Cavity',
-            dataIndex: 'models_cavity',
+            dataIndex: 'cavity',
             align: 'center',
             layout: {
                 type: 'vbox',
