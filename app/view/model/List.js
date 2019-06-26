@@ -240,6 +240,7 @@ Ext.define('App.view.model.List', {
             dataIndex: 'code',
             align: 'center',
             flex: 5,
+            editor: 'textfield',
             layout: {
                 type: 'vbox',
                 pack: 'center',
